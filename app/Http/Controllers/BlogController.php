@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Like;
 use App\Notifications\Like as LikeNotify;
+use Illuminate\Support\Facades\Notification;
+
 
 class BlogController extends Controller
 {
@@ -48,7 +50,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         $blog->load('user');
-        $relatedPosts = Blog::where('category_id', $blog->category_id)->take(7)->latest()->get();
+        $relatedPosts = Blog::where('category_id', $blog->category_id)->with('user')->take(7)->latest()->get();
         return inertia('Blog', compact('blog', 'relatedPosts'));
     }
 
@@ -79,6 +81,20 @@ class BlogController extends Controller
 
     function toggleLike(Request $request)
     {
-        // echo $request->is_liked ? 1 : 0;
+        $like = Like::where([['blog_id', $request->id], ['user_id', Auth::id()]])->first();
+
+        $blog = Blog::find($request->id);
+
+        if ($like) {
+            $is_liked = $request->is_liked ? 1 : 0;
+            $like->update(compact('is_liked'));
+        } else {
+            Like::create(['blog_id' => $request->id, 'user_id' => Auth::id()]);
+            if ($blog->user->id != Auth::id())
+                $blog->user->notify(new LikeNotify(['user' => auth()->user(), 'notify' => 'likes', 'blog' => $blog]));
+        }
+
+
+        return redirect()->route('home');
     }
 }

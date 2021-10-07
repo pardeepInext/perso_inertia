@@ -13,6 +13,8 @@ class Blog extends Model
   protected $fillable = ['discription', 'title', 'img', 'category_id', 'user_id'];
   protected $appends = ['figure', 'blog_date', 'like_status'];
 
+  public static $searchable = ['title'];
+
   function category()
   {
     return  $this->hasOne(Category::class, 'id');

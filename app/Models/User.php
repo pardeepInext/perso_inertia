@@ -27,6 +27,8 @@ class User extends Authenticatable
 
     protected $appends = ['profile_image'];
 
+    public static $searchable = ['email', 'name'];
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -44,7 +44,9 @@ class HomeController extends Controller
 
     function notification()
     {
-        return inertia("Notifications")->withViewData([
+        $notifications = auth()->user()->notifications;
+
+        return inertia("Notifications", compact('notifications'))->withViewData([
             'key' => 'Notification'
         ]);
     }

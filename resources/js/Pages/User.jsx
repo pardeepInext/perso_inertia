@@ -9,7 +9,7 @@ const User = ({ asset, unreadcount, user }) => {
 
 
     const setDetails = (properyName) => user.user_details != null ? user.user_details[properyName] : '';
-    console.log(user);
+
     const { data, setData, errors, post, progress } = useForm({
         country_id: '',
         state_id: '',
@@ -77,7 +77,7 @@ const User = ({ asset, unreadcount, user }) => {
     }
 
     return (
-        <Master asset={asset} unreadcount={unreadcount}>
+        <Master asset={asset} unreadcount={unreadcount} currentUser={user}>
             <Head title="User" />
             <div className="container rounded bg-white">
                 <div className="row">

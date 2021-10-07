@@ -5,14 +5,14 @@ import Category from '../components/Category';
 import Blog from '../components/Blog';
 import { Notify } from 'notiflix';
 
-const Index = ({ asset, blogs, categories, status, unreadcount }) => {
+const Index = ({ asset, blogs, categories, status, unreadcount, currentUser }) => {
 
     useEffect(() => {
         if (status) Notify.success(status);
     }, [status]);
 
     return (
-        <Master asset={asset} unreadcount={unreadcount}>
+        <Master asset={asset} unreadcount={unreadcount} currentUser={currentUser}>
             <Head title="Parsa" />
             <div className="container-fluid p-sm-0 category" id="category">
                 <div className="content">

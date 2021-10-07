@@ -8,6 +8,26 @@
 
 // Bootstrap
 
+.notification-img {
+    width: 40px;
+    height: 40px;
+}
+
+.notification-alert {
+    border-color: #fdefe6;
+    color: #000000;
+    font-family: "hanskendrick";
+    font-weight: 600;
+    line-height: 1.2;
+}
+.notification-alert a {
+    text-decoration: none;
+    color: #000000;
+    font-family: "hanskendrick";
+    font-weight: 600;
+    line-height: 1.2;
+}
+
 .css-1s2u09g-control,
 .css-1insrsq-control,
 .css-1insrsq-control {
@@ -24,6 +44,15 @@
     color: #fff;
     background: #fd7e14;
     border-color: #fd7e14;
+}
+
+.link-notification{
+    padding: 21%;
+    font-size: 16px;
+    background: #fdefe6;
+    color: black;
+    border: 1px solid #fdefe6;
+
 }
 
 .logout:hover {
@@ -53,7 +82,17 @@
 }
 
 .content::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
+    height: 6px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #e36c0b;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fd7e14;
 }
 
 .btn-primary:hover,

@@ -39,6 +39,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'asset' => asset(""),
             'status' => fn () => request()->session()->get('status'),
+            'currentUser' => fn () => auth()->user() ? auth()->user() : null,
             'unreadcount' => function () {
                 $userTest = auth()->user() ? auth()->user()->unreadNotifications->count() : null;
                 return $userTest;

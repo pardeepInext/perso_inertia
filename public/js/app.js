@@ -61482,6 +61482,30 @@ var map = {
 		"./resources/js/Pages/Blog.jsx",
 		"resources_js_Pages_Blog_jsx"
 	],
+	"./Category": [
+		"./resources/js/Pages/Category.jsx",
+		"resources_js_Pages_Category_jsx"
+	],
+	"./Category.jsx": [
+		"./resources/js/Pages/Category.jsx",
+		"resources_js_Pages_Category_jsx"
+	],
+	"./Chat": [
+		"./resources/js/Pages/Chat.jsx",
+		"resources_js_Pages_Chat_jsx"
+	],
+	"./Chat.jsx": [
+		"./resources/js/Pages/Chat.jsx",
+		"resources_js_Pages_Chat_jsx"
+	],
+	"./Error": [
+		"./resources/js/Pages/Error.jsx",
+		"resources_js_Pages_Error_jsx"
+	],
+	"./Error.jsx": [
+		"./resources/js/Pages/Error.jsx",
+		"resources_js_Pages_Error_jsx"
+	],
 	"./Index": [
 		"./resources/js/Pages/Index.jsx",
 		"resources_js_Pages_Index_jsx"
@@ -61497,6 +61521,14 @@ var map = {
 	"./Notifications.jsx": [
 		"./resources/js/Pages/Notifications.jsx",
 		"resources_js_Pages_Notifications_jsx"
+	],
+	"./Search": [
+		"./resources/js/Pages/Search.jsx",
+		"resources_js_Pages_Search_jsx"
+	],
+	"./Search.jsx": [
+		"./resources/js/Pages/Search.jsx",
+		"resources_js_Pages_Search_jsx"
 	],
 	"./User": [
 		"./resources/js/Pages/User.jsx",
@@ -61655,7 +61687,7 @@ module.exports = JSON.parse('{"_from":"axios","_id":"axios@0.21.4","_inBundle":f
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Add_jsx":1,"resources_js_Pages_Auth_Login_jsx":1,"resources_js_Pages_Auth_Register_jsx":1,"resources_js_Pages_Blog_jsx":1,"resources_js_Pages_Index_jsx":1,"resources_js_Pages_Notifications_jsx":1,"resources_js_Pages_User_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Add_jsx":1,"resources_js_Pages_Auth_Login_jsx":1,"resources_js_Pages_Auth_Register_jsx":1,"resources_js_Pages_Blog_jsx":1,"resources_js_Pages_Category_jsx":1,"resources_js_Pages_Chat_jsx":1,"resources_js_Pages_Error_jsx":1,"resources_js_Pages_Index_jsx":1,"resources_js_Pages_Notifications_jsx":1,"resources_js_Pages_Search_jsx":1,"resources_js_Pages_User_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

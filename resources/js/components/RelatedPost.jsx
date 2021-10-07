@@ -9,14 +9,14 @@ const RelatedPost = (props) => {
     }
 
     return (
-        <div className="media mb-4">
+        <div className="media mb-4 d-flex align-items-center">
             <div className="post-thumb-sm me-3">
                 <img className="img-fluid" src={figure} alt="post-thumb" />
             </div>
             <div className="media-body">
                 <ul className="list-inline d-flex justify-content-between mb-2">
                     <li className="list-inline-item">
-                        Post By {user ? user.name : "Loading.."}
+                        Post By {user.name}
                     </li>
                     <li className="list-inline-item">{blog_date}</li>
                 </ul>

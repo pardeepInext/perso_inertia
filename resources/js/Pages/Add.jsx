@@ -6,7 +6,7 @@ import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.min.css';
 
 
-const Add = ({ categories, asset, unreadcount }) => {
+const Add = ({ categories, asset, unreadcount, currentUser }) => {
 
     const { data, setData, errors, progress, post } = useForm({
         category_id: '',
@@ -84,7 +84,7 @@ const Add = ({ categories, asset, unreadcount }) => {
     }, [imagePreview, cropCount]);
 
     return (
-        <Master asset={asset} unreadcount={unreadcount}>
+        <Master asset={asset} unreadcount={unreadcount} currentUser={currentUser} >
             <Head title="Add" />
             <section className="section">
                 <div className="container">

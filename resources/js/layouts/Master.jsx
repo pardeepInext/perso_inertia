@@ -2,9 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from '@inertiajs/inertia-react';
 import Footer from '../components/Footer';
 import bootstrap from 'bootstrap'
-const Master = ({ asset, children, unreadcount }) => {
+import { Notify } from 'notiflix';
+const Master = ({ asset, children, unreadcount, currentUser }) => {
 
+    const [search, setsearch] = useState("");
     const [scroll, setscroll] = useState(false);
+    const [newUnreadcount, setnewUnreadcount] = useState(unreadcount);
     const menuElm = useRef(null)
     const [menus] = useState([
         {
@@ -20,9 +23,14 @@ const Master = ({ asset, children, unreadcount }) => {
             route: "add",
         },
         {
+            menuClass: 'fab fa-facebook-messenger',
+            route: 'message'
+        },
+        {
             menuClass: "fas fa-user",
             route: 'user'
         }
+
     ]);
 
     const scrollMethod = e => {
@@ -30,18 +38,20 @@ const Master = ({ asset, children, unreadcount }) => {
     };
 
     useEffect(() => {
-        // window.addEventListener('scroll', scrollMethod);
 
-        // Echo.private(`like.2`)
-        //     .notification((notification) => {
-        //         console.log(notification);
-        //     });
+        window.addEventListener('scroll', scrollMethod);
 
-        // Echo.private(`like.2`).listen('ChatMessage', (e) => { console.log(e) })
-        // return () => {
-        //     window.removeEventListener('scroll', scrollMethod)
-        // }
-    }, [])
+        Echo.private(`like.${currentUser.id}`)
+            .notification((notification) => {
+                console.log(notification);
+                setnewUnreadcount(prev => prev + 1)
+            });
+
+        return () => {
+            window.removeEventListener('scroll', scrollMethod)
+        }
+    }, []);
+
 
     return (
         <>
@@ -67,13 +77,12 @@ const Master = ({ asset, children, unreadcount }) => {
                                         style={{ fontSize: "2rem" }}
                                         href={route(menu.route)}
                                     >
-                                        <i className={`${menu.menuClass} ${menu.route === 'notification' && `position-relative`}`}>
+                                        <i className={`${menu.menuClass} ${menu.route === 'notification' && `position-relative`} `}>
                                             {(menu.route == 'notification' && unreadcount > 0) && (
                                                 <span
-                                                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger link-notification"
-                                                    style={{ padding: '21%', fontSize: '16px' }}
+                                                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill link-notification"
                                                 >
-                                                    {unreadcount < 99 ? unreadcount : '99+'}
+                                                    {newUnreadcount < 99 ? newUnreadcount : '99+'}
                                                 </span>
 
                                             )}
@@ -85,15 +94,19 @@ const Master = ({ asset, children, unreadcount }) => {
                         <form className="form-inline position-relative ml-lg-4">
                             <input
                                 className="form-control px-0 w-100"
-                                type="search"
+                                type="input"
                                 placeholder="Search"
+                                onChange={e => setsearch(e.target.value)}
                             />
-                            <a href="search.html" className="search-icon">
-                                <i
-                                    className="fas fa-search text-dark"
-                                    style={{ color: "#ababab" }}
-                                ></i>
-                            </a>
+                            {
+                                search.length > 0 &&
+                                <Link href={route('search', { qry: search })} className="search-icon" as="button">
+                                    <i
+                                        className="fas fa-search text-dark"
+                                        style={{ color: "#ababab" }}
+                                    ></i>
+                                </Link>
+                            }
                         </form>
                     </div>
                 </nav>

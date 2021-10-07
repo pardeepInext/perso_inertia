@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from '@inertiajs/inertia-react'
 const Category = ({ figure, id, name }) => {
 
     return (
@@ -21,16 +21,16 @@ const Category = ({ figure, id, name }) => {
                     >
                         <p className="text-uppercase">{name}</p>
                         <h4 className="card-title mb-4">
-                            <a className="text-white" href="blog-single.html">
+                            <Link className="text-white" href={route('category-show', { name: name })}>
                                 All blogs of {name}
-                            </a>
+                            </Link>
                         </h4>
-                        <a
+                        <Link
                             className="btn btn-outline-light"
-                            href="blog-single.html"
+                            href={route('category-show', { name: name })}
                         >
                             read more
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </article>

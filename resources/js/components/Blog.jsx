@@ -13,9 +13,10 @@ const Blog = (props) => {
     const [isLiking, setisLiking] = useState(like_status);
 
     const toggleLike = () => {
-        setisLiking(!isLiking);
-        console.log({ id: id, is_liked: isLiking });
-        Inertia.post(route('toggle-like'), { id: id, is_liked: isLiking })
+        let isLike = !isLiking
+        setisLiking(isLike);
+        Inertia.post(route('toggle-like'), { id: id, is_liked: isLike });
+
     }
 
     const getText = (str) => {

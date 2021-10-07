@@ -9,7 +9,10 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name', "image"];
+
     protected $appends = ['figure'];
+
+    public static $searchable = ['name'];
 
     function getFigureAttribute()
     {

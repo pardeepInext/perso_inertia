@@ -9,6 +9,7 @@ import NProgress from 'nprogress'
 import { Inertia } from '@inertiajs/inertia'
 import { Notify } from 'notiflix';
 
+
 NProgress.configure({ showSpinner: false });
 
 Inertia.on('start', e => e.detail.visit.method == 'get' && NProgress.start())
